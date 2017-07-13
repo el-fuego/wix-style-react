@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, func, node, oneOf, string} from 'prop-types';
+import {bool, func, node, string} from 'prop-types';
 import styles from './ButtonHeader.scss';
 import classNames from 'classnames';
 import {Button} from '../../../src/Backoffice/';
@@ -15,10 +15,7 @@ class ButtonHeader extends WixComponent {
     buttonSuffix: node,
     subtitle: string,
     tooltip: node,
-    theme: oneOf([
-      'standard',
-      'fullblue',
-    ]),
+    theme: Button.propTypes.theme,
     withoutDivider: bool,
   };
 
