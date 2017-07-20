@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, node, any, oneOf, func} from 'prop-types';
+import {bool, node, oneOf, func} from 'prop-types';
 import classNames from 'classnames';
 import styles from './CollapsedHeader.scss';
 import Switch from '../../../src/ToggleSwitch';
@@ -15,7 +15,7 @@ class CollapsedHeader extends WixComponent {
     title: node.isRequired,
     subtitle: node,
     withoutDivider: bool,
-    children: any,
+    children: node,
     toggleStyle: oneOf(['switch', 'button']),
     collapsed: bool,
     onCollapsedChange: func
