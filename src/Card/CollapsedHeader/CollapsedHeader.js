@@ -1,5 +1,5 @@
 import React from 'react';
-import {bool, node, any, oneOf} from 'prop-types';
+import {bool, node, any, oneOf, func} from 'prop-types';
 import classNames from 'classnames';
 import styles from './CollapsedHeader.scss';
 import Switch from '../../../src/ToggleSwitch';
@@ -17,7 +17,8 @@ class CollapsedHeader extends WixComponent {
     withoutDivider: bool,
     children: any,
     toggleStyle: oneOf(['switch', 'button']),
-    collapsed: bool
+    collapsed: bool,
+    onCollapsedChange: func
   };
 
   static defaultProps = {
@@ -41,6 +42,12 @@ class CollapsedHeader extends WixComponent {
     }
   }
 
+  toggleCollapsed = event => {
+    const {onCollapsedChange} = this.props;
+    this.setState({isCollapsed: !this.state.isCollapsed});
+    onCollapsedChange && onCollapsedChange(event);
+  };
+
   render() {
     const {title, subtitle, withoutDivider} = this.props;
 
@@ -50,13 +57,9 @@ class CollapsedHeader extends WixComponent {
       [styles.withDivider]: !withoutDivider,
     });
 
-    const onChange = () => {
-      this.setState({isCollapsed: !this.state.isCollapsed});
-    };
-
     const switchElement = (
       <div className={styles.collapsedSwitch}>
-        <Switch dataHook="switch" onChange={onChange} checked={!this.state.isCollapsed}/>
+        <Switch dataHook="switch" onChange={this.toggleCollapsed} checked={!this.state.isCollapsed}/>
       </div>
     );
 
@@ -66,7 +69,7 @@ class CollapsedHeader extends WixComponent {
           dataHook="button"
           height="medium"
           prefixIcon={this.state.isCollapsed ? <ArrowDownThin/> : <ArrowUpThin/>}
-          onClick={onChange}
+          onClick={this.toggleCollapsed}
           theme="whiteblueprimary"
           >
           {this.state.isCollapsed ? 'More' : 'Less'}
