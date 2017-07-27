@@ -115,6 +115,11 @@
 
 /* Dsiabled State */
 
+.wrapper.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
 .wrapper.disabled .checkbox, .wrapper.disabled:hover .checkbox, .wrapper.disabled.hover .checkbox,
 .wrapper.disabled.active .checkbox, .wrapper.disabled:active .checkbox {
     border-color: $GR20;
@@ -124,4 +129,9 @@
 .wrapper.disabled.checked .checkbox, .wrapper.disabled.checked:hover .checkbox, .wrapper.disabled.checked.hover .checkbox,
 .wrapper.disabled.checked.active .checkbox, .wrapper.disabled.checked:active .checkbox {
     background-color: $GR20;
+}
+
+/* Error State */
+.wrapper.hasError .checkbox {
+    border-color: $R10;
 }
