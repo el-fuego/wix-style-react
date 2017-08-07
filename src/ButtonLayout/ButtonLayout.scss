@@ -310,6 +310,30 @@
     color: $D10;
 }
 
+.link,
+.link-purple {
+    @extend .t1_3;
+    height: 24px;
+    padding: 0;
+
+    &.heightsmall {
+        @extend .t3_3;
+        height: 18px;
+        padding: 0;
+    }
+
+    background-color: transparent;
+    border: none;
+}
+
+.link {
+    color: $B10;
+}
+
+.link-purple {
+    color: $P10;
+}
+
 .fullgreen:hover, .fullgreen.hover,
 .emptygreen:hover, .emptygreen.hover {
     @extend .t1_2;
@@ -416,6 +440,11 @@
     background-color: transparent;
     border-color: transparent;
     color: $B20;
+}
+
+.link:hover, .link.hover,
+.link-purple:hover, .link-purple.hover {
+    text-decoration: underline;
 }
 
 .icon-greybackground:active, .icon-greybackground.active,
@@ -591,5 +620,10 @@
     pointer-events: none;
     background-color: transparent;
     border-color: transparent;
+    color: $D55;
+}
+
+.link.disabled,
+.link-purple.disabled {
     color: $D55;
 }
